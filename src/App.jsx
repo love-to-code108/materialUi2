@@ -1,12 +1,13 @@
-
+import { MuiTypography } from './components/MuiTypography'
 import './App.css'
 
 function App() {
-  
+
 
   return (
     <div>
-      Hello world
+      <h1>Hello world</h1>
+      <MuiTypography />
     </div>
   )
 }
