@@ -1,6 +1,32 @@
-import { Stack, Button } from "@mui/material"
+import { Stack, Button, IconButton, ButtonGroup, ToggleButtonGroup, ToggleButton } from "@mui/material"
+import SendIcon from '@mui/icons-material/Send';
+import FormatBoldIcon from '@mui/icons-material/FormatBold';
+import FormatItalicIcon from '@mui/icons-material/FormatItalic';
+import FormatUnderlinedIcon from '@mui/icons-material/FormatUnderlined';
+
+import { useState } from "react";
 
 export const MuiButton = () => {
+
+    const [formats, setFormats] = useState([]);
+
+
+
+    const handleFormatChange = (_event, updatedFormats) => {
+
+
+        setFormats(updatedFormats);
+
+        console.log(formats)
+
+
+
+    }
+
+
+
+
+
     return (
 
         <Stack spacing={4}>
@@ -47,7 +73,39 @@ export const MuiButton = () => {
                 <Button variant="outlines" color="error">error</Button>
                 <Button variant="outlines" color="success">success</Button>
                 <Button variant="outlines" color="info">info</Button>
-                <Button variant="outlines" color="warning">warning</Button>
+                <Button variant="outlines" color="warning" >warning</Button>
+            </Stack>
+
+            <Stack spacing={2} direction="row">
+                <Button variant="contained" startIcon={<SendIcon />} disableElevation>Sent</Button>
+                <Button variant="contained" endIcon={<SendIcon />} disableRipple>Sent</Button>
+
+                <IconButton aria-label="send" size="small" color="warning">
+                    <SendIcon />
+                </IconButton>
+
+
+
+
+                {/* VIDEO 5 */}
+                <Stack direction="row">
+                    <ButtonGroup variant="contained" orientation="vertical" size="large" color="secondary">
+                        <Button>Left</Button>
+                        <Button>Center</Button>
+                        <Button>Right</Button>
+                    </ButtonGroup>
+                </Stack>
+
+
+
+                <Stack direction="column" >
+                    <ToggleButtonGroup value={formats} size="large" color="warning" orientation="vertical" onChange={handleFormatChange}>
+                        <ToggleButton value="italic" ><FormatItalicIcon /></ToggleButton>
+                        <ToggleButton value="bold" ><FormatBoldIcon /></ToggleButton>
+                        <ToggleButton value="underlined" ><FormatUnderlinedIcon /></ToggleButton>
+                    </ToggleButtonGroup>
+
+                </Stack>
             </Stack>
         </Stack>
     )
